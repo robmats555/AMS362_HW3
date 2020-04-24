@@ -21,3 +21,30 @@ Finally we can implement the Runge-Kutta method, starting *t* from *a* (7777) an
 <img src="rk.PNG" width=500>
 
 The algorithm is run iteratively, using the previous iteration's result for *y* for the next *y* and at the same time decreasing the x-value by the step size *h*. 
+
+## Pseudocode
+
+    # h is step_size
+    def runge_kutta(x, y, h, vb):
+       k1 = f(x, y, vb)
+       k2 = f(x + (.5*h), y + (.5 * h * k1), vb)
+       k3 = f(x + (.5*h), y + (.5 * h * k2), vb)
+       k4 = f(x + h, y + (h * k3), vb)
+       return y * (1/6)*h*(k1 + 2k2 + 2k3 + k4)
+       
+    def f(x, y, vb):
+      dx/dy provided in the setup for the problem
+    
+    def main():
+      step_size = -0.1
+      x = generate points from 7777 to 0 with step_size
+      y = [0]
+      vb = [7, 14, 21]
+      
+      for initial_speed in vb:
+          for x_cor in x:
+              append to y result from runge_kutta(x, y, h, vb)
+          plot the points
+          reset y
+        
+
